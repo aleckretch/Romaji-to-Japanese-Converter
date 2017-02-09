@@ -126,8 +126,8 @@ def convertRomaji(romaji):
 					continue
 				elif oneChar == "?" or oneChar == "." or oneChar == "!": #punctuation
 					resultString += "。"
-				elif oneChar == ",":
-					resultString += ","
+				elif oneChar == "," or oneChar == "(" or oneChar == ")" or oneChar == "/" or oneChar == "\\" or oneChar == "<" or oneChar == ">":
+					resultString += oneChar
 				elif i+1 < len(romaji): #little tsu rule
 					if oneChar == romaji[i+1:i+2]:
 						resultString += currentAlphabet["pause"]
