@@ -91,11 +91,14 @@ def convertRomaji(romaji):
 					resultString += currentAlphabet[threeChar]
 					i+=3
 					if (i < len(romaji)):
-						if romaji[i:i+1] == "o" and romaji[i-1:i] == "o": #oo = ou rule
+						if romaji[i:i+1] == "o" and romaji[i-1:i] == "o" and hiraganaIsCurrent: #oo = ou rule
 							resultString += currentAlphabet["u"]
 							i+=1
-						elif romaji[i:i+1] == "e" and romaji[i-1:i] == "e": #ee = ei rule
+						elif romaji[i:i+1] == "e" and romaji[i-1:i] == "e" and hiraganaIsCurrent: #ee = ei rule
 							resultString += currentAlphabet["i"]
+							i+=1
+						elif romaji[i:i+1] == romaji[i-1:i] and hiraganaIsCurrent == False:
+							resultString += currentAlphabet["pause"]
 							i+=1
 					continue
 			if (i+1 < len(romaji)):
@@ -104,11 +107,14 @@ def convertRomaji(romaji):
 					resultString += currentAlphabet[twoChar]
 					i+=2
 					if (i < len(romaji)):
-						if romaji[i:i+1] == "o" and romaji[i-1:i] == "o": #oo = ou rule
+						if romaji[i:i+1] == "o" and romaji[i-1:i] == "o" and hiraganaIsCurrent: #oo = ou rule
 							resultString += currentAlphabet["u"]
 							i+=1
-						elif romaji[i:i+1] == "e" and romaji[i-1:i] == "e": #ee = ei rule
+						elif romaji[i:i+1] == "e" and romaji[i-1:i] == "e" and hiraganaIsCurrent: #ee = ei rule
 							resultString += currentAlphabet["i"]
+							i+=1
+						elif romaji[i:i+1] == romaji[i-1:i] and hiraganaIsCurrent == False:
+							resultString += currentAlphabet["pause"]
 							i+=1
 					continue
 			if (i < len(romaji)):
@@ -117,16 +123,19 @@ def convertRomaji(romaji):
 					resultString += currentAlphabet[oneChar]
 					i+=1
 					if (i < len(romaji)):
-						if romaji[i:i+1] == "o" and romaji[i-1:i] == "o": #oo = ou rule
+						if romaji[i:i+1] == "o" and romaji[i-1:i] == "o" and hiraganaIsCurrent: #oo = ou rule
 							resultString += currentAlphabet["u"]
 							i+=1
-						elif romaji[i:i+1] == "e" and romaji[i-1:i] == "e": #ee = ei rule
+						elif romaji[i:i+1] == "e" and romaji[i-1:i] == "e" and hiraganaIsCurrent: #ee = ei rule
 							resultString += currentAlphabet["i"]
+							i+=1
+						elif romaji[i:i+1] == romaji[i-1:i] and hiraganaIsCurrent == False:
+							resultString += currentAlphabet["pause"]
 							i+=1
 					continue
 				elif oneChar == "?" or oneChar == "." or oneChar == "!": #punctuation
 					resultString += "。"
-				elif oneChar == "," or oneChar == "(" or oneChar == ")" or oneChar == "/" or oneChar == "\\" or oneChar == "<" or oneChar == ">":
+				elif oneChar == "," or oneChar == "(" or oneChar == ")" or oneChar == "/" or oneChar == "\\" or oneChar == "<" or oneChar == ">" or oneChar == "-" or oneChar == "~":
 					resultString += oneChar
 				elif i+1 < len(romaji): #little tsu rule
 					if oneChar == romaji[i+1:i+2]:
