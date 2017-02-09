@@ -26,7 +26,7 @@ hiragana = {"a":"あ","i":"い","u":"う","e":"え","o":"お",
 "mya":"みゃ","myu":"みゅ","myo":"みょ",
 "rya":"りゃ","ryu":"りゅ","ryo":"りょ",
 "vu":"ゔ",
-"sukuon":"っ"}
+"pause":"っ"}
 
 katakana = {"a":"ア","i":"イ","u":"ウ","e":"エ","o":"オ",
 "ka":"カ","ki":"キ","ku":"ク","ke":"ケ","ko":"コ",
@@ -56,7 +56,7 @@ katakana = {"a":"ア","i":"イ","u":"ウ","e":"エ","o":"オ",
 "mya":"ミャ","myu":"ミュ","myo":"ミョ",
 "rya":"リャ","ryu":"リュ","ryo":"リョ",
 "vu":"ヴ",
-"sukuon":"っ"}
+"pause":"ー"}
 
 def main():
 	while 1:
@@ -130,7 +130,7 @@ def convertRomaji(romaji):
 					resultString += ","
 				elif i+1 < len(romaji): #little tsu rule
 					if oneChar == romaji[i+1:i+2]:
-						resultString += currentAlphabet["sukuon"]
+						resultString += currentAlphabet["pause"]
 						i+=1
 						continue
 		i+=1
