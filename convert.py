@@ -60,7 +60,7 @@ katakana = {"a":"ア","i":"イ","u":"ウ","e":"エ","o":"オ",
 
 def main():
 	while 1:
-		romaji = input("Enter a romaji string (enter characters within two * characters for katakana): ")
+		romaji = input("Enter a Romaji string (enter characters within two * characters for Katakana): ")
 		japanese = convertRomaji(romaji.lower())
 		print(japanese)
 
