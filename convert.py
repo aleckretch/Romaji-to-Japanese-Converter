@@ -26,7 +26,7 @@ hiragana = {"a":"あ","i":"い","u":"う","e":"え","o":"お",
 "mya":"みゃ","myu":"みゅ","myo":"みょ",
 "rya":"りゃ","ryu":"りゅ","ryo":"りょ",
 "vu":"ゔ",
-"pause":"っ"}
+"sakuon":"っ"}
 
 katakana = {"a":"ア","i":"イ","u":"ウ","e":"エ","o":"オ",
 "ka":"カ","ki":"キ","ku":"ク","ke":"ケ","ko":"コ",
@@ -56,13 +56,22 @@ katakana = {"a":"ア","i":"イ","u":"ウ","e":"エ","o":"オ",
 "mya":"ミャ","myu":"ミュ","myo":"ミョ",
 "rya":"リャ","ryu":"リュ","ryo":"リョ",
 "vu":"ヴ",
+"va":"ヴァ","vi":"ヴィ","ve":"ヴェ","vo":"ヴォ",
+"wi":"ウィ","we":"ウェ",
+"fa":"ファ","fi":"フィ","fe":"フェ", "fo":"フォ",
+"che":"チェ",
+"di":"ディ","du":"ドゥ",
+"ti":"ティ","tu":"トゥ",
+"je":"ジェ",
+"she":"シェ",
+"sakuon":"ッ",
 "pause":"ー"}
 
 def main():
 	while 1:
-		romaji = input("Enter a Romaji string (enter characters within two * characters for Katakana): ")
+		romaji = input("Enter a Romaji string: ")
 		japanese = convertRomaji(romaji.lower())
-		print(japanese)
+		print("Japanese equivalent: %s" % japanese)
 
 def convertRomaji(romaji):
 	currentAlphabet = hiragana
@@ -98,7 +107,10 @@ def convertRomaji(romaji):
 							resultString += currentAlphabet["i"]
 							i+=1
 						elif romaji[i:i+1] == romaji[i-1:i] and hiraganaIsCurrent == False:
-							resultString += currentAlphabet["pause"]
+							if romaji[i:i+1] in ["a", "e", "i", "o", "u"]:
+								resultString += currentAlphabet["pause"]
+							else:
+								resultString += currentAlphabet["sakuon"]
 							i+=1
 					continue
 			if (i+1 < len(romaji)):
@@ -114,7 +126,10 @@ def convertRomaji(romaji):
 							resultString += currentAlphabet["i"]
 							i+=1
 						elif romaji[i:i+1] == romaji[i-1:i] and hiraganaIsCurrent == False:
-							resultString += currentAlphabet["pause"]
+							if romaji[i:i+1] in ["a", "e", "i", "o", "u"]:
+								resultString += currentAlphabet["pause"]
+							else:
+								resultString += currentAlphabet["sakuon"]
 							i+=1
 					continue
 			if (i < len(romaji)):
@@ -130,16 +145,19 @@ def convertRomaji(romaji):
 							resultString += currentAlphabet["i"]
 							i+=1
 						elif romaji[i:i+1] == romaji[i-1:i] and hiraganaIsCurrent == False:
-							resultString += currentAlphabet["pause"]
+							if romaji[i:i+1] in ["a", "e", "i", "o", "u"]:
+								resultString += currentAlphabet["pause"]
+							else:
+								resultString += currentAlphabet["sakuon"]
 							i+=1
 					continue
 				elif oneChar == "?" or oneChar == "." or oneChar == "!": #punctuation
 					resultString += "。"
-				elif oneChar == "," or oneChar == "(" or oneChar == ")" or oneChar == "/" or oneChar == "\\" or oneChar == "<" or oneChar == ">" or oneChar == "-" or oneChar == "~":
+				elif oneChar not in ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]: #print any characters that aren't a letter
 					resultString += oneChar
 				elif i+1 < len(romaji): #little tsu rule
 					if oneChar == romaji[i+1:i+2]:
-						resultString += currentAlphabet["pause"]
+						resultString += currentAlphabet["sakuon"]
 						i+=1
 						continue
 		i+=1
