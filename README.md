@@ -3,7 +3,7 @@ A Python script that converts Romaji to Hiragana and/or Katakana
 
 ## How to run
 
-Download the convert.py file and run in shell using `python3 convert.py`. The default character set is the Hiragana. Use asterisks to switch between the Hiragana and Katakana, such as `watashi wa *amerikajin* desu`.
+Download the convert.py file and run in shell using `python3 convert.py`. The default character set is the Hiragana. Use asterisks to switch between the Hiragana and Katakana, such as `watashi wa *amerika*jin desu`.
 
 ## Features
 
