@@ -11,5 +11,5 @@ Download the convert.py file and run in shell using `python3 convert.py`. The de
 2. Punctuation marks of `.`, `!`, and `?` are converted to the Japanese punctuation mark of `。`
 3. The second `o` of `oo` is converted to the character associated with `u` for Hiragana (`う`)
 4. The second `e` of `ee` is converted to the character associated with `i` for Hiragana (`い`)
-5. The first consonant of two consecutive same consonants (except for `n`) is converted to the long-sound character for Hiragana (`っ`)
-6. The second of consecutive same characters is converted to the long-sound character for Katakana (`ー`)
+5. The first consonant of two consecutive same consonants (except for `n`) is converted to the sakuon character for Hiragana and Katakana (`っ` in Hiragana or `ッ` in Katakana)
+6. The second of consecutive same vowels is converted to the long-sound character for Katakana (`ー`)
