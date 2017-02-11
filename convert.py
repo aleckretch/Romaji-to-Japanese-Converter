@@ -93,7 +93,7 @@ def convertRomaji(romaji):
 					i+=4
 					continue
 			resultString += " "
-		elif i+2 < len(romaji) and romaji[i] == "n" and romaji[i+1:i+2] == "n" and romaji[i+2:i+3] == "n":
+		elif i+2 < len(romaji) and romaji[i] == "n" and romaji[i+1:i+2] == "n" and romaji[i+1:i+3] not in currentAlphabet:
 			resultString += currentAlphabet["sakuon"]
 			i+=1
 			continue
