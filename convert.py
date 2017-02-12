@@ -67,13 +67,7 @@ katakana = {"a":"ア","i":"イ","u":"ウ","e":"エ","o":"オ",
 "sakuon":"ッ",
 "pause":"ー"}
 
-def main():
-	while 1:
-		romaji = input("Enter a Romaji string: ")
-		japanese = convertRomaji(romaji.lower())
-		print("Japanese equivalent: %s" % japanese)
-
-def convertRomaji(romaji):
+def romajiToJapanese(romaji):
 	currentAlphabet = hiragana
 	hiraganaIsCurrent = True
 	resultStr = ""
@@ -133,5 +127,3 @@ def convertRomaji(romaji):
 					break	
 				checkLen-=1
 	return resultStr
-
-main()
