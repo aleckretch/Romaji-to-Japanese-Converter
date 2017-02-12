@@ -76,101 +76,62 @@ def main():
 def convertRomaji(romaji):
 	currentAlphabet = hiragana
 	hiraganaIsCurrent = True
-	resultString = ""
+	resultStr = ""
 	i=0
 	while i < len(romaji):
-		if romaji[i] == "*":
+		if romaji[i] == "*": #switch alphabets
 			if hiraganaIsCurrent:
 				currentAlphabet = katakana
 				hiraganaIsCurrent = False
 			else:
 				currentAlphabet = hiragana
 				hiraganaIsCurrent = True
-		elif romaji[i] == " ":
+			i+=1
+		elif romaji[i] == " ": #check wa rule
 			if (i+3 < len(romaji)):
 				if romaji[i:i+4] == " wa ": #ha/wa rule
-					resultString += " %s " % currentAlphabet["ha"]
+					resultStr += " %s " % currentAlphabet["ha"]
 					i+=4
 					continue
-			resultString += " "
-		elif i+2 < len(romaji) and romaji[i] == "n" and romaji[i+1:i+2] == "n" and romaji[i+1:i+3] not in currentAlphabet:
-			resultString += currentAlphabet["sakuon"]
+			resultStr += " "
 			i+=1
-			continue
+		elif i+2 < len(romaji) and romaji[i] == "n" and romaji[i+1:i+2] == "n" and romaji[i+1:i+3] not in currentAlphabet: #n rule
+			resultStr += currentAlphabet["sakuon"]
+			i+=1
 		else:
-			if (i+2 < len(romaji)):
-				threeChar = romaji[i:i+3]
-				if threeChar in currentAlphabet:
-					resultString += currentAlphabet[threeChar]
-					i+=3
+			checkLen = min(3, len(romaji)-i)
+			while checkLen > 0:
+				checkStr = romaji[i:i+checkLen]
+				if checkStr in currentAlphabet:
+					resultStr += currentAlphabet[checkStr]
+					i+=checkLen
 					if (i < len(romaji)):
 						if romaji[i] == "o" and romaji[i-1:i] == "o" and hiraganaIsCurrent: #oo = ou rule
-							resultString += currentAlphabet["u"]
+							resultStr += currentAlphabet["u"]
 							i+=1
 						elif romaji[i] == "e" and romaji[i-1:i] == "e" and hiraganaIsCurrent: #ee = ei rule
-							resultString += currentAlphabet["i"]
+							resultStr += currentAlphabet["i"]
 							i+=1
 						elif romaji[i] == romaji[i-1:i] and hiraganaIsCurrent == False:
 							if romaji[i] == "n":
-								continue
+								break
 							elif romaji[i] in ["a", "e", "i", "o", "u"]:
-								resultString += currentAlphabet["pause"]
+								resultStr += currentAlphabet["pause"]
 							else:
-								resultString += currentAlphabet["sakuon"]
+								resultStr += currentAlphabet["sakuon"]
 							i+=1
-					continue
-			if (i+1 < len(romaji)):
-				twoChar = romaji[i:i+2]
-				if twoChar in currentAlphabet:
-					resultString += currentAlphabet[twoChar]
-					i+=2
-					if (i < len(romaji)):
-						if romaji[i] == "o" and romaji[i-1:i] == "o" and hiraganaIsCurrent: #oo = ou rule
-							resultString += currentAlphabet["u"]
-							i+=1
-						elif romaji[i] == "e" and romaji[i-1:i] == "e" and hiraganaIsCurrent: #ee = ei rule
-							resultString += currentAlphabet["i"]
-							i+=1
-						elif romaji[i] == romaji[i-1:i] and hiraganaIsCurrent == False:
-							if romaji[i] == "n":
-								continue
-							elif romaji[i] in ["a", "e", "i", "o", "u"]:
-								resultString += currentAlphabet["pause"]
-							else:
-								resultString += currentAlphabet["sakuon"]
-							i+=1
-					continue
-			if (i < len(romaji)):
-				oneChar = romaji[i]
-				if oneChar in currentAlphabet:
-					resultString += currentAlphabet[oneChar]
+					break
+				elif checkLen == 1:
+					if checkStr == "?" or checkStr == "." or checkStr == "!": #punctuation
+						resultStr += "。"
+					elif checkStr not in ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]: #print any characters that aren't a letter
+						resultStr += checkStr
+					elif i+1 < len(romaji): #little tsu rule
+						if checkStr == romaji[i+1:i+2]:
+							resultStr += currentAlphabet["sakuon"]
 					i+=1
-					if (i < len(romaji)):
-						if romaji[i] == "o" and romaji[i-1:i] == "o" and hiraganaIsCurrent: #oo = ou rule
-							resultString += currentAlphabet["u"]
-							i+=1
-						elif romaji[i] == "e" and romaji[i-1:i] == "e" and hiraganaIsCurrent: #ee = ei rule
-							resultString += currentAlphabet["i"]
-							i+=1
-						elif romaji[i] == romaji[i-1:i] and hiraganaIsCurrent == False:
-							if romaji[i] == "n":
-								continue
-							elif romaji[i] in ["a", "e", "i", "o", "u"]:
-								resultString += currentAlphabet["pause"]
-							else:
-								resultString += currentAlphabet["sakuon"]
-							i+=1
-					continue
-				elif oneChar == "?" or oneChar == "." or oneChar == "!": #punctuation
-					resultString += "。"
-				elif oneChar not in ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]: #print any characters that aren't a letter
-					resultString += oneChar
-				elif i+1 < len(romaji): #little tsu rule
-					if oneChar == romaji[i+1:i+2]:
-						resultString += currentAlphabet["sakuon"]
-						i+=1
-						continue
-		i+=1
-	return resultString
+					break	
+				checkLen-=1
+	return resultStr
 
 main()
