@@ -9,11 +9,11 @@ Import convert.py into a Python file and call the function `romajiToJapanese()` 
 
 Input:
 ```python3
-convert.romajiToJapanese("Watashi wa *amerika*jin desu.")
+print(convert.romajiToJapanese("Watashi wa *amerika*jin desu."))
 ```
 Output:
-```python3
-convert.romajiToJapanese("わたし は アメリカじん です")
+```
+わたし は アメリカじん です。
 ```
 
 ## Shell playground
