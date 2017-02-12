@@ -11,10 +11,7 @@ Input:
 ```python3
 print(convert.romajiToJapanese("Watashi wa *amerika*jin desu."))
 ```
-Output:
-```
-わたし は アメリカじん です。
-```
+Output: `わたし は アメリカじん です。`
 
 ## Shell playground
 
