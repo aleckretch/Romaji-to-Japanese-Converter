@@ -7,8 +7,14 @@ Import convert.py into a Python file and call the function `romajiToJapanese()` 
 
 ## Example usage
 
-Input: `convert.romajiToJapanese("Watashi wa *amerika*jin desu.")`
-Output: `convert.romajiToJapanese("わたし は アメリカじん です")`
+Input:
+```python3
+convert.romajiToJapanese("Watashi wa *amerika*jin desu.")
+```
+Output:
+```python3
+convert.romajiToJapanese("わたし は アメリカじん です")
+```
 
 ## Shell playground
 
