@@ -68,6 +68,7 @@ katakana = {"a":"ア","i":"イ","u":"ウ","e":"エ","o":"オ",
 "pause":"ー"}
 
 def romajiToJapanese(romaji):
+	romaji = romaji.lower()
 	currentAlphabet = hiragana
 	hiraganaIsCurrent = True
 	resultStr = ""
