@@ -1,9 +1,18 @@
 # Romaji-to-Japanese-Converter
 A Python script that converts Romaji to Hiragana and/or Katakana
 
-## How to run
+## Usage
 
-Download the convert.py file and run in shell using `python3 convert.py`. The default character set is the Hiragana. Use asterisks to switch between the Hiragana and Katakana, such as `watashi wa *amerika*jin desu`.
+Import convert.py into a Python file and call the function `romajiToJapanese()` with your Romaji string as the input. The default character set is the Hiragana. Use asterisks to switch between the Hiragana and Katakana.
+
+## Example usage
+
+Input: `convert.romajiToJapanese("Watashi wa *amerika*jin desu.")`
+Output: `convert.romajiToJapanese("わたし は アメリカじん です")`
+
+## Shell playground
+
+Run `python3 input_convert.py` to manually input Romaji strings for instant conversion.
 
 ## Features
 
