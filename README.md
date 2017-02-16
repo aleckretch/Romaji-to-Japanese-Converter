@@ -25,3 +25,7 @@ Run `python3 input_convert.py` to manually input Romaji strings for instant conv
 4. The second `e` of `ee` is converted to the character associated with `i` for Hiragana (`い`)
 5. The first consonant of two consecutive same consonants (except for `n`) is converted to the sakuon character for Hiragana and Katakana (`っ` in Hiragana or `ッ` in Katakana)
 6. The second of consecutive same vowels is converted to the long-sound character for Katakana (`ー`)
+
+## Web example
+
+http://romaji.aleckretch.com
